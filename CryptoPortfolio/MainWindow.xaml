@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoPortfolio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="PortfolioTracker" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <ProgressBar x:Name="UpdateTimeProgressBar" Orientation="Horizontal" Width="Auto" Height="10"/>
+            <local:PortfolioValueDisplay x:Name="PortfolioValueDisplay"/>
+            <local:PortfolioViewer x:Name="PortfolioViewer" Width="Auto" Height="Auto"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.ColumnSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Content="Symbol:"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="SymbolTextBox" HorizontalAlignment="Left" Width="100"/>
+
+                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Quantity:"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="QuantityTextBox" HorizontalAlignment="Left" Width="100"/>
+
+                <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Content="Currency:"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="CurrencyTextBox" HorizontalAlignment="Left" Width="100"/>
+
+                <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Content="Price:"/>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="PriceTextBox" HorizontalAlignment="Left" Width="100"/>
+            
+                <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"  x:Name="AddToPortfolioButton" Content="Add to Portfolio" Click="AddToPortfolioButton_Click"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Display Cryto:" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="DisplayCryptoComboBox" Width="75" HorizontalAlignment="Left" Loaded="DisplayCryptoComboBox_Loaded" SelectedIndex="0" SelectionChanged="DisplayCryptoComboBox_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Display Currency:" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="DisplayCurrencyComboBox" Width="75" HorizontalAlignment="Left" Loaded="DisplayCurrencyComboBox_Loaded" SelectedIndex="0" SelectionChanged="DisplayCurrencyComboBox_SelectionChanged"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
