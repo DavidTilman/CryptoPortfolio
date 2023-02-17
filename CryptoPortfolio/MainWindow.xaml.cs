@@ -25,7 +25,7 @@ namespace CryptoPortfolio
         public MainWindow()
         {
             InitializeComponent();
-            Repeat(UpdatePortfolio, new TimeSpan(0,0,0,0,500));
+            Repeat(UpdatePortfolio, new TimeSpan(0,0,0,0,10));
 
         }
         private void Repeat(EventHandler event_handler, TimeSpan delay)
